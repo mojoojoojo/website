@@ -18,7 +18,20 @@
   --accent: #8f5cff;
   --shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
-
+/* Profile Picture Upload */
+.profile-upload {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.profile-upload img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 2px solid #ccc;
+}
 *{box-sizing:border-box}
 body{
   margin:0; font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
