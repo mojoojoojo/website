@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centralized Student Record System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginPage" class="page active">
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="loginId" placeholder="ID Number">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+</div>
+
+<div id="adminPanel" class="page">
+    <header>
+        <h2>Admin Panel</h2>
+        <div class="header-buttons">
+            <button onclick="toggleTheme()">🌓</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+    <nav>
+        <button onclick="showAdminSection('home')">Home</button>
+        <button onclick="showAdminSection('students')">Manage Students</button>
+        <button onclick="showAdminSection('attendance')">Attendance</button>
+        <button onclick="showAdminSection('grades')">Grades</button>
+        <button onclick="showAdminSection('schedule')">Schedule</button>
+        <button onclick="showAdminSection('importExport')">Import/Export</button>
+    </nav>
+    <main id="adminContent"></main>
+</div>
+
+<div id="studentPanel" class="page">
+    <header>
+        <h2>Student Dashboard</h2>
+        <div class="header-buttons">
+            <button onclick="toggleTheme()">🌓</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+    <main id="studentContent"></main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
