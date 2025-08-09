@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Centralized Student Record System</title>
   <link href="style.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="app" class="app">
-    <header class="header card">
+  <div class="app">
+
+    <header class="app-header card">
       <div class="brand">
         <div class="logo">CSR</div>
         <div>
@@ -20,7 +20,7 @@
 
       <div class="header-actions">
         <button id="themeToggle" class="btn ghost" title="Toggle theme">🌙</button>
-        <div class="muted">Admin demo: <strong>admin</strong>/<strong>admin123</strong></div>
+        <div class="muted tiny">Admin demo: <strong>admin</strong> / <strong>admin123</strong></div>
       </div>
     </header>
 
@@ -28,7 +28,7 @@
     <main id="loginView" class="card center">
       <div class="auth-card">
         <h2>Sign in</h2>
-        <p class="muted">Choose role. Student default password: <code>IDNumber-MMDD</code> (e.g. <code>12-1234-567-0531</code>).</p>
+        <p class="muted">Student default password: <code>IDNumber-MMDD</code> (e.g. <code>12-1234-567-0531</code>).</p>
 
         <label>Role</label>
         <select id="loginRole">
@@ -51,6 +51,7 @@
 
     <!-- DASHBOARD -->
     <section id="dashboard" class="dashboard hidden">
+
       <aside id="sidebar" class="sidebar card">
         <div class="sidebar-top">
           <div id="userAvatarSmall" class="avatar-small-placeholder">G</div>
@@ -81,6 +82,25 @@
       <main class="main">
         <div class="main-header card" style="display:flex;justify-content:space-between;align-items:center;">
           <div>
+            <h3 id="mainTitle">Home</h3>
+            <div id="mainSubtitle" class="muted">Overview</div>
+          </div>
+          <div class="main-actions">
+            <div id="globalQuickPills"></div>
+          </div>
+        </div>
+
+        <div id="content" class="content card">
+          <!-- dynamic content -->
+        </div>
+      </main>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>          <div>
             <h3 id="mainTitle">Home</h3>
             <div id="mainSubtitle" class="muted">Overview</div>
           </div>
