@@ -1,52 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centralized Student Record System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Centralized Student Record System</title>
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div id="loginPage" class="page active">
-    <div class="login-container">
-        <h2>Login</h2>
-        <input type="text" id="loginId" placeholder="ID Number">
-        <input type="password" id="loginPassword" placeholder="Password">
-        <button onclick="login()">Login</button>
-    </div>
-</div>
-
-<div id="adminPanel" class="page">
-    <header>
-        <h2>Admin Panel</h2>
-        <div class="header-buttons">
-            <button onclick="toggleTheme()">🌓</button>
-            <button onclick="logout()">Logout</button>
+  <div id="app" class="app">
+    <header class="header card">
+      <div class="brand">
+        <div class="logo">CSR</div>
+        <div>
+          <div class="title">Centralized Student Record System</div>
+          <div class="subtitle">ACSHS — ICT Grade 12 (Demo)</div>
         </div>
-    </header>
-    <nav>
-        <button onclick="showAdminSection('home')">Home</button>
-        <button onclick="showAdminSection('students')">Manage Students</button>
-        <button onclick="showAdminSection('attendance')">Attendance</button>
-        <button onclick="showAdminSection('grades')">Grades</button>
-        <button onclick="showAdminSection('schedule')">Schedule</button>
-        <button onclick="showAdminSection('importExport')">Import/Export</button>
-    </nav>
-    <main id="adminContent"></main>
-</div>
+      </div>
 
-<div id="studentPanel" class="page">
-    <header>
-        <h2>Student Dashboard</h2>
-        <div class="header-buttons">
-            <button onclick="toggleTheme()">🌓</button>
-            <button onclick="logout()">Logout</button>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn ghost" title="Toggle theme">🌙</button>
+        <div class="muted">Admin demo: <strong>admin</strong>/<strong>admin123</strong></div>
+      </div>
+    </header>
+
+    <!-- LOGIN -->
+    <main id="loginView" class="card center">
+      <div class="auth-card">
+        <h2>Sign in</h2>
+        <p class="muted">Choose role. Student default password: <code>IDNumber-MMDD</code> (e.g. <code>12-1234-567-0531</code>).</p>
+
+        <label>Role</label>
+        <select id="loginRole">
+          <option value="student">Student</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <label>ID / Username</label>
+        <input id="loginId" type="text" placeholder="Student ID or admin">
+
+        <label>Password</label>
+        <input id="loginPass" type="password" placeholder="Password">
+
+        <div class="row" style="margin-top:12px;">
+          <button class="btn primary" id="loginBtn">Login</button>
+          <button class="btn ghost" id="loadDemoBtn">Load Demo Data</button>
         </div>
-    </header>
-    <main id="studentContent"></main>
-</div>
+      </div>
+    </main>
 
-<script src="script.js"></script>
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="dashboard hidden">
+      <aside id="sidebar" class="sidebar card">
+        <div class="sidebar-top">
+          <div id="userAvatarSmall" class="avatar-small-placeholder">G</div>
+          <div id="sidebarUserName" class="sidebar-name">Guest</div>
+          <div id="sidebarUserMeta" class="muted tiny">Not signed in</div>
+        </div>
+
+        <nav class="nav" id="navMenu">
+          <button class="nav-item active" data-view="home">Home</button>
+          <button class="nav-item" data-view="manageStudents">Manage Students</button>
+          <button class="nav-item" data-view="attendance">Attendance</button>
+          <button class="nav-item" data-view="grades">Grades</button>
+          <button class="nav-item" data-view="schedule">Schedule</button>
+          <button class="nav-item" data-view="importExport">Import / Export</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="muted tiny">Theme</div>
+          <div class="row" style="margin-top:6px;">
+            <button class="btn ghost" id="sidebarThemeBtn">Toggle</button>
+          </div>
+          <div style="margin-top:10px;">
+            <button class="btn danger" id="logoutBtn">Logout</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="main-header card" style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <h3 id="mainTitle">Home</h3>
+            <div id="mainSubtitle" class="muted">Overview</div>
+          </div>
+          <div class="main-actions">
+            <div id="globalQuickPills"></div>
+          </div>
+        </div>
+
+        <div id="content" class="content card">
+          <!-- dynamic content -->
+        </div>
+      </main>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
